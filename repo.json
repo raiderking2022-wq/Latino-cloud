@@ -1,6 +1,6 @@
 {
   "name": "Cloudstream Latino",
-  "description": "RelampagoMovies y Peelink2. Proveedores experimentales en español latino.",
+  "description": "Peelink2: catálogo completo por páginas, géneros y búsqueda de películas. Audio latino.",
   "manifestVersion": 1,
   "pluginLists": [
     "https://raw.githubusercontent.com/raiderking2022-wq/Latino-cloud/builds/plugins.json"

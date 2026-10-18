@@ -1,6 +1,6 @@
-version = 2
+version = 3
 cloudstream {
-    description = "Peelink2: catálogo, búsqueda y opciones de audio latino. Reproducción pendiente de validar en dispositivo."
+    description = "Peelink2: catálogo completo por páginas, destacadas, géneros y búsqueda corregida con portadas. Prioriza audio latino."
     authors = listOf("hakanyordan-sys")
     status = 3
     tvTypes = listOf("Movie")

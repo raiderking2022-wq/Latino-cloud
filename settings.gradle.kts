@@ -1,2 +1,2 @@
 rootProject.name = "CloudstreamLatino"
-include("Peelink2", "RelampagoMovies")
+include("Peelink2")

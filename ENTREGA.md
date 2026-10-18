@@ -1,18 +1,13 @@
-# Entrega adaptada a Latino-cloud
+# Actualización de Peelink2
 
-El destino del proyecto es https://github.com/raiderking2022-wq/Latino-cloud. Se actualizaron el manifiesto `repo.json`, el repositorio por defecto de Gradle y las instrucciones; se conservan los avisos de autoría y licencia del código original.
+El repositorio activo es https://github.com/raiderking2022-wq/Latino-cloud y conserva el enlace de instalación existente. La distribución actual se centra exclusivamente en Peelink2.
 
-## Estado de verificación
+## Cambios de la versión 3
 
-- **Compilación nueva completada:** la [ejecución del 18 de octubre de 2026](https://github.com/raiderking2022-wq/Latino-cloud/actions/runs/39141064911) superó las pruebas, compiló ambos proveedores, comprobó la compatibilidad JAR y publicó la distribución en `builds`.
-- **Corrección incluida y compilada:** el alias `uqload.vc` usa `override var mainUrl`, acorde con la API distribuida. La integración ya pasó la compilación en este repositorio.
-- **Peelink2:** HTML de catálogo y ficha inspeccionado; reproducción en Android sin verificar.
-- **RelampagoMovies:** experimental, con selectores y reproducción sin verificar por bloqueo Cloudflare.
-- **Instalación por enlace publicada:** el manifiesto es https://raw.githubusercontent.com/raiderking2022-wq/Latino-cloud/main/repo.json y la lista de complementos es https://raw.githubusercontent.com/raiderking2022-wq/Latino-cloud/builds/plugins.json.
-- **Advertencias no bloqueantes:** D8 informó de metadatos Kotlin más recientes que su versión de lectura, aunque la compilación terminó correctamente. No se presenta esto como una prueba de carga o reproducción real en Android.
+- Búsqueda de películas por portadas reales, sin confundir la página de presentación con un resultado.
+- Normalización de `spiderman` y `Spider-Man` a `spider man`, conservando una variante original como alternativa.
+- Catálogo completo por páginas, destacadas separadas, sección latina y navegación por géneros.
+- Pruebas de regresión para el problema de la captura y para los nuevos analizadores.
+- Eliminación de módulos no usados y limpieza de los archivos de distribución anteriores al publicar.
 
-## Publicación directa
-
-El repositorio contiene el código descomprimido y el workflow en `.github/workflows/build.yml`. No es necesario subir manualmente los paquetes preparados para la cuenta anterior.
-
-No se necesita introducir tokens, contraseñas ni cookies en el código; el workflow usa el token temporal de GitHub Actions. La distribución queda en `builds` después de superar las pruebas y la compilación.
+El reproductor latino no se cambia por esta actualización. El catálogo puede incluir títulos sin audio latino o con servidores no compatibles; eso no se presenta como garantía de reproducción.

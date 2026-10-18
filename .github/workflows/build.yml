@@ -31,11 +31,11 @@ jobs:
       - name: Preparar distribución
         run: |
           mkdir -p dist
-          cp Peelink2/build/*.cs3 RelampagoMovies/build/*.cs3 dist/
-          cp Peelink2/build/*.jar RelampagoMovies/build/*.jar dist/
+          cp Peelink2/build/*.cs3 dist/
+          cp Peelink2/build/*.jar dist/
           cp build/plugins.json repo.json dist/
-          test "$(jq length dist/plugins.json)" = 2
-          for plugin in Peelink2 RelampagoMovies; do test -s "dist/$plugin.cs3"; done
+          test "$(jq length dist/plugins.json)" = 1
+          test -s dist/Peelink2.cs3
       - uses: actions/upload-artifact@v4
         with:
           name: cloudstream-latino
@@ -52,10 +52,11 @@ jobs:
             git -C publication checkout --orphan builds
             git -C publication rm -rf . || true
           fi
+          git -C publication ls-files -z | xargs -0 -r -I '{}' rm -f -- "publication/{}"
           cp dist/* publication/
           git -C publication config user.name "github-actions[bot]"
           git -C publication config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git -C publication add .
+          git -C publication add -A
           if git -C publication diff --cached --quiet; then exit 0; fi
           git -C publication commit -m "Compilar ${GITHUB_SHA}"
           git -C publication push origin HEAD:builds

@@ -1,51 +1,49 @@
 # Cloudstream Latino
 
-> **Repositorio:** `raiderking2022-wq/Latino-cloud`. La distribución se publica automáticamente solo después de superar las pruebas y la compilación. La reproducción en Android no se verificó; RelampagoMovies continúa experimental por bloqueo Cloudflare.
+Repositorio de Cloudstream dedicado a [Peelink2](https://www.peelink2.com/inicio). El catálogo se consulta por páginas y no se limita a las películas con audio latino; el reproductor conserva la prioridad por las opciones latinas.
 
-La [compilación inicial del repositorio nuevo](https://github.com/raiderking2022-wq/Latino-cloud/actions/runs/39141064911) completó las pruebas, generó ambas extensiones y publicó la [lista de distribución](https://raw.githubusercontent.com/raiderking2022-wq/Latino-cloud/builds/plugins.json). Una compilación correcta no garantiza que los servidores de vídeo funcionen en un dispositivo real.
+## Instalar o actualizar
 
-Repositorio de extensiones para Cloudstream con las fuentes solicitadas: [RelampagoMovies](https://relampagomovies.com/) y [Peelink2](https://www.peelink2.com/inicio). El código no aloja películas y solo utiliza enlaces que expone cada sitio; úsalo únicamente con contenido al que tengas derecho de acceso.
-
-## Instalación en Cloudstream
-
-En Ajustes > Extensiones > Añadir repositorio, pega esta dirección:
+En Ajustes > Extensiones > Añadir repositorio, utiliza:
 
 ```text
 https://raw.githubusercontent.com/raiderking2022-wq/Latino-cloud/main/repo.json
 ```
 
-Después instala **Peelink2** y **RelampagoMovies** desde el repositorio. Ambos complementos están marcados como beta; usa una versión de Cloudstream compatible con extensiones beta si tu versión estable no los muestra o no permite instalarlos.
+Después instala o actualiza **Peelink2**. La versión 3 corrige la búsqueda, añade navegación por catálogo y categorías, y mantiene el mismo identificador para que la aplicación pueda actualizar la instalación existente.
 
-La lista y los archivos `.cs3` se publican en la rama `builds` solo después de una compilación correcta. Si la lista todavía no existe, consulta [GitHub Actions](https://github.com/raiderking2022-wq/Latino-cloud/actions) y espera a que termine o revisa el error; añadir `repo.json` por sí solo no instala los complementos.
+La extensión está marcada como beta. Usa una versión de Cloudstream compatible con extensiones beta si tu versión estable no la muestra o no permite instalarla.
 
-## Estado y límites
+## Catálogo y búsqueda
 
-| Fuente | Implementado | Verificación |
-| --- | --- | --- |
-| Peelink2 Latino | Portadas, catálogo latino, últimas películas, búsqueda WordPress, ficha y decodificación de opciones `px_repros['latino_N']`; resolución por extractores de Cloudstream. | HTML de catálogo y ficha inspeccionado. Reproducción en Android pendiente. |
-| RelampagoMovies | Proveedor experimental con rutas `movie-ID`, páginas `?page=N`, descubrimiento del formulario de búsqueda y lectores genéricos de ficha/enlaces. | El sitio devuelve HTTP 403 y un desafío Cloudflare. No se pudieron verificar selectores, búsqueda ni reproducción. No se presenta como funcional. |
+- **Todo el catálogo:** navega por [las páginas del sitio](https://www.peelink2.com/inicio), incluidas las siguientes páginas; no se descarga todo de una vez en el teléfono.
+- **Destacadas:** separa las recomendaciones de la primera página para no repetirlas dentro del listado general.
+- **Películas en latino:** mantiene la sección específica y su paginación.
+- **Géneros:** añade Acción, Ciencia ficción, Drama, Comedia, Infantil y Terror. Las páginas de género usan el botón de carga adicional publicado por el sitio.
+- **Búsqueda:** lee las portadas de los resultados y deja de tomar el encabezado genérico de la página como película. Si no hay resultados, devuelve una lista vacía.
+- **Variantes de nombres:** `spiderman` y `Spider-Man` se consultan también como `spider man`, que es la forma que devuelve resultados en la web.
 
-La estructura de Peelink2 se observó en [su catálogo](https://www.peelink2.com/inicio), [la sección latino](https://www.peelink2.com/latino) y [una ficha de muestra](https://www.peelink2.com/2024/10/ver-the-substance-la-sustancia-2024-online.html). Las rutas públicas de RelampagoMovies aparecen en [su catálogo paginado](https://relampagomovies.com/?page=191) y [una ficha indexada](https://www.relampagomovies.com/movie-6606); la estructura HTML del proveedor es provisional, no una integración verificada.
+El fallo se reprodujo con [la búsqueda original](https://www.peelink2.com/?s=spiderman), que no devolvía películas, y se contrastó con [spider man](https://www.peelink2.com/?s=spider+man) y [batman](https://www.peelink2.com/?s=batman). La estructura de catálogo y las páginas siguientes se revisaron en [inicio](https://www.peelink2.com/inicio), [página 2](https://www.peelink2.com/inicio/page/2), [latino, página 2](https://www.peelink2.com/latino/page/2) y [Acción](https://www.peelink2.com/2012/12/pagina-accion.html).
 
-No se prometen servidores compatibles, reproducción de todo el catálogo ni resolución de Cloudflare. No se evaden CAPTCHA, suscripciones, DRM, autenticación ni acortadores publicitarios. Los enlaces a archivos comprimidos de descarga no se tratan como vídeos reproducibles. Los cambios de dominio, HTML o servidor pueden requerir actualizar el código.
+La disponibilidad de una película en el catálogo no garantiza que tenga audio latino o un servidor compatible. No se modifica silenciosamente el idioma elegido ni se garantiza reproducción de todo el sitio.
 
-Peelink2 prioriza únicamente las opciones etiquetadas `latino`. El catálogo “Últimas películas” y la búsqueda pueden mostrar títulos sin audio latino; en ese caso la extensión informa que no encontró una opción reproducible, en vez de sustituirla silenciosamente por castellano o subtítulos.
+## Compilación automática
 
-## Compilar y actualizar
+Cada cambio de código en `main` ejecuta pruebas unitarias, genera `.cs3` y `.jar`, comprueba compatibilidad JAR y publica una lista con una sola extensión en `builds`. Los archivos de distribuciones retiradas se eliminan de esa rama al publicar; el historial Git se conserva.
 
-El proyecto parte de la configuración actual de [recloudstream/extensions](https://github.com/recloudstream/extensions) y de su [plugin Gradle](https://github.com/recloudstream/gradle). Requiere Java 17, Android SDK 35 y conexión para resolver dependencias; las dependencias SNAPSHOT siguen al proyecto upstream y no garantizan compilaciones idénticas en fechas diferentes.
+La [lista de distribución](https://raw.githubusercontent.com/raiderking2022-wq/Latino-cloud/builds/plugins.json) solo cambia después de una compilación correcta. Consulta [GitHub Actions](https://github.com/raiderking2022-wq/Latino-cloud/actions) para comprobar el resultado.
 
 ```bash
 chmod +x gradlew
 ./gradlew testDebugUnitTest make makePluginsJson ensureJarCompatibility
 ```
 
-Cada `push` a `main` con cambios de código ejecuta pruebas, genera `.cs3` y `.jar`, crea `plugins.json` y publica en `builds`. También se puede lanzar manualmente desde Actions > Compilar extensiones > Run workflow. Aumenta el entero `version` en el `build.gradle.kts` de la extensión modificada para distribuir una actualización.
+El proyecto usa Java 17, Android SDK 35, el [plugin Gradle de Cloudstream](https://github.com/recloudstream/gradle) y configuración adaptada de [recloudstream/extensions](https://github.com/recloudstream/extensions). Las dependencias SNAPSHOT pueden cambiar con el tiempo.
 
-El código se mantiene descomprimido en la raíz del repositorio. No es necesario subir un ZIP desde el celular; el workflow de `.github/workflows/build.yml` compila directamente las carpetas del proyecto.
+Las pruebas cubren los resultados vacíos, el encabezado genérico, los enlaces anidados de las búsquedas, portadas sin título, duplicados, selección del catálogo, paginación, configuración de categorías y selección de reproductores latinos. No reemplazan una prueba de reproducción real en Android.
 
-Las pruebas cubren URLs HTTP válidas, títulos/años, base64 UTF-8, redirecciones de doble base64, selección exclusiva de latino, atributos HTML en mayúsculas y reproductores heredados vacíos. No constituyen una prueba de reproducción real ni acceden a servidores de vídeo.
+## Límites y uso
 
-## Reportar un problema
+Este repositorio no aloja películas. Úsalo únicamente con contenido al que tengas derecho de acceso; no se evaden CAPTCHA, suscripciones, DRM, autenticación ni acortadores publicitarios.
 
-Abre una incidencia con el nombre de la extensión, versión de Cloudstream, título y URL de la ficha, mensaje exacto de error y si el sitio funciona en el navegador del mismo dispositivo. No publiques cookies, contraseñas, tokens ni capturas con datos personales.
+Para reportar un problema, indica la versión de la extensión, el texto buscado o la URL de la ficha y el mensaje de error. No publiques cookies, contraseñas, tokens ni capturas con datos personales.
