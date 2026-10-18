@@ -4,11 +4,12 @@ El destino del proyecto es https://github.com/raiderking2022-wq/Latino-cloud. Se
 
 ## Estado de verificación
 
-- **Base compilada anteriormente:** las pruebas y la compilación de ambos proveedores pasaron antes de esta adaptación. Eso no sustituye una compilación del paquete actualizado.
-- **Corrección incluida:** el alias `uqload.vc` usa `override var mainUrl`, acorde con la API distribuida observada durante la compilación anterior. Debe verificarse al ejecutar el flujo nuevo.
+- **Compilación nueva completada:** la [ejecución del 18 de octubre de 2026](https://github.com/raiderking2022-wq/Latino-cloud/actions/runs/39141064911) superó las pruebas, compiló ambos proveedores, comprobó la compatibilidad JAR y publicó la distribución en `builds`.
+- **Corrección incluida y compilada:** el alias `uqload.vc` usa `override var mainUrl`, acorde con la API distribuida. La integración ya pasó la compilación en este repositorio.
 - **Peelink2:** HTML de catálogo y ficha inspeccionado; reproducción en Android sin verificar.
 - **RelampagoMovies:** experimental, con selectores y reproducción sin verificar por bloqueo Cloudflare.
-- **Instalación por enlace:** no estará disponible hasta subir los archivos y completar correctamente la compilación de GitHub Actions en el repositorio nuevo.
+- **Instalación por enlace publicada:** el manifiesto es https://raw.githubusercontent.com/raiderking2022-wq/Latino-cloud/main/repo.json y la lista de complementos es https://raw.githubusercontent.com/raiderking2022-wq/Latino-cloud/builds/plugins.json.
+- **Advertencias no bloqueantes:** D8 informó de metadatos Kotlin más recientes que su versión de lectura, aunque la compilación terminó correctamente. No se presenta esto como una prueba de carga o reproducción real en Android.
 
 ## Publicación directa
 

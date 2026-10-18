@@ -2,6 +2,8 @@
 
 > **Repositorio:** `raiderking2022-wq/Latino-cloud`. La distribución se publica automáticamente solo después de superar las pruebas y la compilación. La reproducción en Android no se verificó; RelampagoMovies continúa experimental por bloqueo Cloudflare.
 
+La [compilación inicial del repositorio nuevo](https://github.com/raiderking2022-wq/Latino-cloud/actions/runs/39141064911) completó las pruebas, generó ambas extensiones y publicó la [lista de distribución](https://raw.githubusercontent.com/raiderking2022-wq/Latino-cloud/builds/plugins.json). Una compilación correcta no garantiza que los servidores de vídeo funcionen en un dispositivo real.
+
 Repositorio de extensiones para Cloudstream con las fuentes solicitadas: [RelampagoMovies](https://relampagomovies.com/) y [Peelink2](https://www.peelink2.com/inicio). El código no aloja películas y solo utiliza enlaces que expone cada sitio; úsalo únicamente con contenido al que tengas derecho de acceso.
 
 ## Instalación en Cloudstream
@@ -12,7 +14,7 @@ En Ajustes > Extensiones > Añadir repositorio, pega esta dirección:
 https://raw.githubusercontent.com/raiderking2022-wq/Latino-cloud/main/repo.json
 ```
 
-Después instala **Peelink2** y **RelampagoMovies** desde el repositorio. Ambos complementos están marcados como beta; si no aparecen en tu versión, revisa sus filtros de extensiones experimentales.
+Después instala **Peelink2** y **RelampagoMovies** desde el repositorio. Ambos complementos están marcados como beta; usa una versión de Cloudstream compatible con extensiones beta si tu versión estable no los muestra o no permite instalarlos.
 
 La lista y los archivos `.cs3` se publican en la rama `builds` solo después de una compilación correcta. Si la lista todavía no existe, consulta [GitHub Actions](https://github.com/raiderking2022-wq/Latino-cloud/actions) y espera a que termine o revisa el error; añadir `repo.json` por sí solo no instala los complementos.
 
