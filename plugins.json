@@ -1,11 +1,11 @@
 [
     {
         "iconUrl": "https://www.peelink2.com/favicon.ico",
-        "jarFileSize": 80466,
-        "fileHash": "sha256-1b3b593f6754acfb073112b2015dffc9c82d2a85e8f1062ef2cbcb7d7dbbdbac",
+        "jarFileSize": 112418,
+        "fileHash": "sha256-41c3c413ab9629a02ba2e9064f10a7fa334d476898fd0a204d646abfd19812f9",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/raiderking2022-wq/Latino-cloud",
-        "fileSize": 22409,
+        "fileSize": 29768,
         "status": 3,
         "language": "es",
         "authors": [
@@ -14,35 +14,12 @@
         "tvTypes": [
             "Movie"
         ],
-        "version": 2,
+        "version": 3,
         "internalName": "Peelink2",
         "jarUrl": "https://raw.githubusercontent.com/raiderking2022-wq/Latino-cloud/builds/Peelink2.jar",
-        "description": "Peelink2: cat\u00e1logo, b\u00fasqueda y opciones de audio latino. Reproducci\u00f3n pendiente de validar en dispositivo.",
+        "description": "Peelink2: cat\u00e1logo completo por p\u00e1ginas, destacadas, g\u00e9neros y b\u00fasqueda corregida con portadas. Prioriza audio latino.",
         "url": "https://raw.githubusercontent.com/raiderking2022-wq/Latino-cloud/builds/Peelink2.cs3",
         "name": "Peelink2",
-        "jarHash": "sha256-d1f9ff24179362295dd996970a69bf300d2608bd062fd860755751f0b72063b4"
-    },
-    {
-        "iconUrl": "https://relampagomovies.com/favicon.ico",
-        "jarFileSize": 88566,
-        "fileHash": "sha256-f06e8bdd6f0ead033d32ef99b0824fe067a98eb04283c2c006cfcf1fe1928520",
-        "apiVersion": 1,
-        "repositoryUrl": "https://github.com/raiderking2022-wq/Latino-cloud",
-        "fileSize": 24733,
-        "status": 3,
-        "language": "es",
-        "authors": [
-            "hakanyordan-sys"
-        ],
-        "tvTypes": [
-            "Movie"
-        ],
-        "version": 1,
-        "internalName": "RelampagoMovies",
-        "jarUrl": "https://raw.githubusercontent.com/raiderking2022-wq/Latino-cloud/builds/RelampagoMovies.jar",
-        "description": "EXPERIMENTAL: RelampagoMovies. El sitio bloquea la inspecci\u00f3n con Cloudflare; selectores y reproducci\u00f3n no verificados.",
-        "url": "https://raw.githubusercontent.com/raiderking2022-wq/Latino-cloud/builds/RelampagoMovies.cs3",
-        "name": "RelampagoMovies",
-        "jarHash": "sha256-191660f1f089587dd3278c7cc0ff59133a130d4d94965e1fe179b3ae08f0519d"
+        "jarHash": "sha256-e99c1e9f1f07b5465c60d7c7d7e0c8ecdb0f380e2081fbda9bcb063d7fa4fb52"
     }
 ]
