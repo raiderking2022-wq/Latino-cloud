@@ -1,4 +1,4 @@
-version = 3
+version = 4
 cloudstream {
     description = "Peelink2: catálogo completo por páginas, destacadas, géneros y búsqueda corregida con portadas. Prioriza audio latino."
     authors = listOf("hakanyordan-sys")

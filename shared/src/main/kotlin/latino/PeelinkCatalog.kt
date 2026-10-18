@@ -21,7 +21,10 @@ object PeelinkCatalog {
         return URI(base).resolve(path).toString()
     }
 
-    fun items(doc: Document, base: String, featured: Boolean = false, fragment: Boolean = false): List<Item> {
+    fun items(
+        doc: Document, base: String, featured: Boolean = false,
+        fragment: Boolean = false, search: Boolean = false
+    ): List<Item> {
         val grids = doc.select(".post-body .contenedorh.destacadas")
         val roots: List<Element> = when {
             featured -> listOfNotNull(grids.firstOrNull())
@@ -32,6 +35,9 @@ object PeelinkCatalog {
         }
         return roots.flatMap { root ->
             root.select("a[href]:has(img)").mapNotNull { link ->
+                if (link.closest(".slider, .related_post") != null) return@mapNotNull null
+                if (search && link.selectFirst(".contenti") == null &&
+                    link.closest(".contenti") == null) return@mapNotNull null
                 val url = canonicalMovie(base, link.attr("href")) ?: return@mapNotNull null
                 val img = link.selectFirst("img") ?: return@mapNotNull null
                 val rawTitle = listOf(img.attr("alt"), img.attr("title"), link.attr("title"))

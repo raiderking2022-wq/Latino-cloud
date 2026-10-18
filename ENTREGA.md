@@ -2,9 +2,10 @@
 
 El repositorio activo es https://github.com/raiderking2022-wq/Latino-cloud y conserva el enlace de instalación existente. La distribución actual se centra exclusivamente en Peelink2.
 
-## Cambios de la versión 3
+## Cambios de la versión 4
 
 - Búsqueda de películas por portadas reales, sin confundir la página de presentación con un resultado.
+- Exclusión de las recomendaciones y sliders insertados dentro de la página de búsqueda.
 - Normalización de `spiderman` y `Spider-Man` a `spider man`, conservando una variante original como alternativa.
 - Catálogo completo por páginas, destacadas separadas, sección latina y navegación por géneros.
 - Pruebas de regresión para el problema de la captura y para los nuevos analizadores.

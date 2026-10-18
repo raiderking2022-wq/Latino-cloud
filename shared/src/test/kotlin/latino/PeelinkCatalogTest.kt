@@ -17,7 +17,7 @@ class PeelinkCatalogTest {
             </div>
             <aside><a href="/2024/01/ver-sidebar-2024.html"><img src="/sidebar.jpg"></a></aside>
         """.trimIndent()
-        assertTrue(PeelinkCatalog.items(Jsoup.parse(html), base).isEmpty())
+        assertTrue(PeelinkCatalog.items(Jsoup.parse(html), base, search = true).isEmpty())
     }
 
     @Test fun readsNestedSearchPostersWithoutAltAndWithoutDuplicateOverlay() {
@@ -31,7 +31,7 @@ class PeelinkCatalogTest {
               </div></a>
             </div>
         """.trimIndent()
-        val result = PeelinkCatalog.items(Jsoup.parse(html), base)
+        val result = PeelinkCatalog.items(Jsoup.parse(html), base, search = true)
         assertEquals(1, result.size)
         assertEquals("Spider man sin camino a casa", result.single().title)
         assertEquals("$base/poster.webp", result.single().poster)
@@ -94,5 +94,26 @@ class PeelinkCatalogTest {
         val result = PeelinkCatalog.items(Jsoup.parse(html), base)
         assertEquals(1, result.size)
         assertEquals("$base/real.jpg", result.single().poster)
+    }
+
+    @Test fun recommendationsInsideSearchBodyAreNotSearchResults() {
+        val html = """
+            <div class="post-body">
+              <div class="slider"><a href="/2026/01/ver-recomendacion-2026.html">
+                <img src="/recommendation.jpg"></a></div>
+              <a href="/2022/01/ver-batman-2022.html"><div class="contenti">
+                <div class="index"><img src="/batman.jpg"></div>
+                <a href="/2022/01/ver-batman-2022.html"><div class="ver"></div></a>
+              </div></a>
+            </div>
+        """.trimIndent()
+        val results = PeelinkCatalog.items(Jsoup.parse(html), base, search = true)
+        assertEquals(1, results.size)
+        assertEquals("Batman 2022", results.single().title)
+        assertEquals("$base/batman.jpg", results.single().poster)
+        val noResults = """<div class="post-body"><div class="slider">
+            <a href="/2026/01/ver-recomendacion-2026.html"><img src="/ad.jpg"></a>
+            </div><h2>No se ha encontrado</h2></div>"""
+        assertTrue(PeelinkCatalog.items(Jsoup.parse(noResults), base, search = true).isEmpty())
     }
 }

@@ -22,8 +22,10 @@ class Peelink2Provider : LatinoProvider() {
     )
     private val genrePages = ConcurrentHashMap<String, PeelinkCatalog.GenrePage>()
 
-    private fun cards(doc: Document, featured: Boolean = false, fragment: Boolean = false): List<SearchResponse> =
-        PeelinkCatalog.items(doc, mainUrl, featured, fragment).map { item ->
+    private fun cards(
+        doc: Document, featured: Boolean = false, fragment: Boolean = false, search: Boolean = false
+    ): List<SearchResponse> =
+        PeelinkCatalog.items(doc, mainUrl, featured, fragment, search).map { item ->
             newMovieSearchResponse(item.title, item.url, TvType.Movie) {
                 posterUrl = item.poster
                 year = item.year
@@ -59,7 +61,7 @@ class Peelink2Provider : LatinoProvider() {
     private suspend fun searchPage(query: String, page: Int): Pair<List<SearchResponse>, Boolean> {
         for (term in PeelinkCatalog.searchTerms(query)) {
             val doc = document("$mainUrl/?s=${URLEncoder.encode(term, "UTF-8")}&paged=$page")
-            val results = cards(doc)
+            val results = cards(doc, search = true)
             if (results.isNotEmpty()) return results to PeelinkCatalog.hasNext(doc, page)
         }
         return emptyList<SearchResponse>() to false

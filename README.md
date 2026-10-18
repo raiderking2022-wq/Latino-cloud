@@ -10,7 +10,7 @@ En Ajustes > Extensiones > Añadir repositorio, utiliza:
 https://raw.githubusercontent.com/raiderking2022-wq/Latino-cloud/main/repo.json
 ```
 
-Después instala o actualiza **Peelink2**. La versión 3 corrige la búsqueda, añade navegación por catálogo y categorías, y mantiene el mismo identificador para que la aplicación pueda actualizar la instalación existente.
+Después instala o actualiza **Peelink2**. La versión 4 corrige la búsqueda, excluye las recomendaciones insertadas entre los resultados, añade navegación por catálogo y categorías, y mantiene el mismo identificador para que la aplicación pueda actualizar la instalación existente.
 
 La extensión está marcada como beta. Usa una versión de Cloudstream compatible con extensiones beta si tu versión estable no la muestra o no permite instalarla.
 
