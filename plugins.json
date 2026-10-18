@@ -1,11 +1,11 @@
 [
     {
         "iconUrl": "https://www.peelink2.com/favicon.ico",
-        "jarFileSize": 112418,
-        "fileHash": "sha256-41c3c413ab9629a02ba2e9064f10a7fa334d476898fd0a204d646abfd19812f9",
+        "jarFileSize": 112705,
+        "fileHash": "sha256-7440eb6b34042127b657e66d1def524969551f250964db7a12d19774accc7093",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/raiderking2022-wq/Latino-cloud",
-        "fileSize": 29768,
+        "fileSize": 29916,
         "status": 3,
         "language": "es",
         "authors": [
@@ -14,12 +14,12 @@
         "tvTypes": [
             "Movie"
         ],
-        "version": 3,
+        "version": 4,
         "internalName": "Peelink2",
         "jarUrl": "https://raw.githubusercontent.com/raiderking2022-wq/Latino-cloud/builds/Peelink2.jar",
         "description": "Peelink2: cat\u00e1logo completo por p\u00e1ginas, destacadas, g\u00e9neros y b\u00fasqueda corregida con portadas. Prioriza audio latino.",
         "url": "https://raw.githubusercontent.com/raiderking2022-wq/Latino-cloud/builds/Peelink2.cs3",
         "name": "Peelink2",
-        "jarHash": "sha256-e99c1e9f1f07b5465c60d7c7d7e0c8ecdb0f380e2081fbda9bcb063d7fa4fb52"
+        "jarHash": "sha256-7a440fff31a76d56b8e9bbe367d22106be36d7a2bae3c1b75207986e75fd2f36"
     }
 ]
