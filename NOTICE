@@ -1,0 +1,7 @@
+Build scaffolding and Gradle wrapper adapted from:
+https://github.com/recloudstream/extensions
+https://github.com/recloudstream/TestPlugins
+
+Cloudstream extension tooling is based on work by the Cloudstream contributors
+and Aliucord contributors. Original upstream files retain their notices.
+New provider code is distributed under the MIT license in LICENSE.

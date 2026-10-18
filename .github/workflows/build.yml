@@ -1,0 +1,61 @@
+name: Compilar extensiones
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['**.md']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cloudstream-build
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: 'platform-tools platforms;android-35 build-tools;35.0.0'
+          log-accepted-android-sdk-licenses: false
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Pruebas y compilación
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon testDebugUnitTest make makePluginsJson ensureJarCompatibility
+      - name: Preparar distribución
+        run: |
+          mkdir -p dist
+          cp Peelink2/build/*.cs3 RelampagoMovies/build/*.cs3 dist/
+          cp Peelink2/build/*.jar RelampagoMovies/build/*.jar dist/
+          cp build/plugins.json repo.json dist/
+          test "$(jq length dist/plugins.json)" = 2
+          for plugin in Peelink2 RelampagoMovies; do test -s "dist/$plugin.cs3"; done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cloudstream-latino
+          path: dist/
+      - name: Publicar rama builds
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git fetch origin builds || true
+          if git show-ref --verify --quiet refs/remotes/origin/builds; then
+            git worktree add publication origin/builds
+          else
+            git worktree add --detach publication
+            git -C publication checkout --orphan builds
+            git -C publication rm -rf . || true
+          fi
+          cp dist/* publication/
+          git -C publication config user.name "github-actions[bot]"
+          git -C publication config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C publication add .
+          if git -C publication diff --cached --quiet; then exit 0; fi
+          git -C publication commit -m "Compilar ${GITHUB_SHA}"
+          git -C publication push origin HEAD:builds
